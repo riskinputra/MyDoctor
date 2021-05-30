@@ -12,30 +12,34 @@ import {colors, fonts} from '../../utils';
 const Doctor = () => {
   return (
     <View style={styles.page}>
-      <View style={styles.content}>
-        <HomeProfile />
-        <Text style={styles.welcome}>
-          Mau konsultasi dengan siapa hari ini?
-        </Text>
-        <View style={styles.wrapperScroll}>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            <View style={styles.category}>
-              <Gap width={16} />
-              <DoctorCategory />
-              <DoctorCategory />
-              <DoctorCategory />
-              <DoctorCategory />
-              <Gap width={6} />
-            </View>
-          </ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <Gap height={30} />
+        <View style={styles.content}>
+          <HomeProfile />
+          <Text style={styles.welcome}>
+            Mau konsultasi dengan siapa hari ini?
+          </Text>
+          <View style={styles.wrapperScroll}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              <View style={styles.category}>
+                <Gap width={16} />
+                <DoctorCategory />
+                <DoctorCategory />
+                <DoctorCategory />
+                <DoctorCategory />
+                <Gap width={6} />
+              </View>
+            </ScrollView>
+          </View>
+          <Text style={styles.sectionLabel}>Top Rated Doctors</Text>
+          <RatedDoctor />
+          <Text style={styles.sectionLabel}>Good News</Text>
+          <Newsitem />
+          <Newsitem />
+          <Newsitem />
         </View>
-        <Text style={styles.sectionLabel}>Top Rated Doctors</Text>
-        <RatedDoctor />
-        <Text style={styles.sectionLabel}>Good News</Text>
-        <Newsitem />
-        <Newsitem />
-        <Newsitem />
-      </View>
+        <Gap height={30} />
+      </ScrollView>
     </View>
   );
 };
@@ -51,7 +55,6 @@ const styles = StyleSheet.create({
   },
   content: {
     backgroundColor: colors.white,
-    paddingVertical: 30,
     paddingHorizontal: 16,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
