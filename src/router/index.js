@@ -1,6 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
+import {BottomNavigator} from '../components';
 import {
   Doctor,
   GetStarted,
@@ -16,7 +17,7 @@ const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const MainApp = () => (
-  <Tab.Navigator>
+  <Tab.Navigator tabBar={props => <BottomNavigator {...props} />}>
     <Tab.Screen name="Doctor" component={Doctor} />
     <Tab.Screen name="Massages" component={Messages} />
     <Tab.Screen name="Hospitals" component={Hospitals} />
