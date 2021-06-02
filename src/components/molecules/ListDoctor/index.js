@@ -1,8 +1,9 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
+import {IconNext} from '../../../assets';
 import {colors, fonts} from '../../../utils';
 
-const ListDoctor = ({profile, name, desc}) => {
+const ListDoctor = ({profile, name, desc, type}) => {
   return (
     <View style={styles.container}>
       <Image source={profile} style={styles.avatar} />
@@ -10,6 +11,7 @@ const ListDoctor = ({profile, name, desc}) => {
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.desc}>{desc}</Text>
       </View>
+      {type === 'next' && <IconNext />}
     </View>
   );
 };
