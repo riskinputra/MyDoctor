@@ -1,8 +1,7 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Header} from 'react-native/Libraries/NewAppScreen';
 import {DummyDoctor11} from '../../assets';
-import ListDoctor from '../../components/molecules/ListDoctor';
+import {Header, List} from '../../components/molecules';
 import {colors} from '../../utils';
 
 const ChooseDoctor = ({navigation}) => {
@@ -13,32 +12,32 @@ const ChooseDoctor = ({navigation}) => {
         title="Pilih Dokter Anak"
         onPress={() => navigation.goBack()}
       />
-      <ListDoctor
+      <List
         type="next"
         profile={DummyDoctor11}
         name="Alexander Jannie"
         desc="Wanita"
         onPress={() => navigation.navigate('Chatting')}
       />
-      <ListDoctor
+      <List
         type="next"
         profile={DummyDoctor11}
         name="Alexander Jannie"
         desc="Wanita"
       />
-      <ListDoctor
+      <List
         type="next"
         profile={DummyDoctor11}
         name="Alexander Jannie"
         desc="Wanita"
       />
-      <ListDoctor
+      <List
         type="next"
         profile={DummyDoctor11}
         name="Alexander Jannie"
         desc="Wanita"
       />
-      <ListDoctor
+      <List
         type="next"
         profile={DummyDoctor11}
         name="Alexander Jannie"
@@ -51,5 +50,5 @@ const ChooseDoctor = ({navigation}) => {
 export default ChooseDoctor;
 
 const styles = StyleSheet.create({
-  page: {backgroundColor: colors.white, flex: 1},
+  page: {backgroundColor: colors.red, flex: 1},
 });

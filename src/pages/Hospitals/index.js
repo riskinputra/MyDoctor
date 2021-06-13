@@ -6,7 +6,7 @@ import {
   DummyHospital3,
   ILHospitalBG,
 } from '../../assets';
-import ListHospital from '../../components/molecules/ListHospital';
+import {ListHospital} from '../../components/molecules';
 import {colors, fonts} from '../../utils';
 
 const Doctor = () => {

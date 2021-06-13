@@ -14,7 +14,7 @@ const TabItem = ({title, active, onPress, onLongPress}) => {
   const Icon = () => {
     if (title === 'Doctor') {
       return active ? <IconDoctorActive /> : <IconDoctor />;
-    } else if (title === 'Messages') {
+    } else if (title === 'Massages') {
       return active ? <IconMessagesActive /> : <IconMessages />;
     } else {
       return active ? <IconHospitalsActive /> : <IconHospitals />;
@@ -26,7 +26,7 @@ const TabItem = ({title, active, onPress, onLongPress}) => {
       onPress={onPress}
       onLongPress={onLongPress}>
       <Icon />
-      <Text style={styles.text(active)}>Tab Item</Text>
+      <Text style={styles.text(active)}>{title}</Text>
     </TouchableOpacity>
   );
 };

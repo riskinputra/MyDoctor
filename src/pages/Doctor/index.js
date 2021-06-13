@@ -1,6 +1,6 @@
 import React from 'react';
 import {ScrollView, StyleSheet, Text, View} from 'react-native';
-import {JSONCategoryDoctor} from '../../assets';
+import {DummyDoctor1, JSONCategoryDoctor} from '../../assets';
 import {
   DoctorCategory,
   Gap,
@@ -17,7 +17,7 @@ const Doctor = ({navigation}) => {
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.wrapperSection}>
             <Gap height={30} />
-            <HomeProfile />
+            <HomeProfile onPress={() => navigation.navigate('UserProfile')} />
             <Text style={styles.welcome}>
               Mau konsultasi dengan siapa hari ini?
             </Text>
@@ -41,14 +41,31 @@ const Doctor = ({navigation}) => {
           </View>
           <View style={styles.wrapperSection}>
             <Text style={styles.sectionLabel}>Top Rated Doctors</Text>
-            <RatedDoctor />
-            <RatedDoctor />
-            <RatedDoctor />
+            <RatedDoctor
+              name="Alexa Rachel"
+              desc="Prdiatrician"
+              avatar={DummyDoctor1}
+              onPress={() => navigation.navigate('DoctorProfile')}
+            />
+            <RatedDoctor
+              name="Alexa Rachel"
+              desc="Prdiatrician"
+              avatar={DummyDoctor1}
+              onPress={() => navigation.navigate('DoctorProfile')}
+            />
+            <RatedDoctor
+              name="Alexa Rachel"
+              desc="Prdiatrician"
+              avatar={DummyDoctor1}
+              onPress={() => navigation.navigate('DoctorProfile')}
+            />
           </View>
-          <Text style={styles.sectionLabel}>Good News</Text>
-          <Newsitem />
-          <Newsitem />
-          <Newsitem />
+          <View style={styles.wrapperSection}>
+            <Text style={styles.sectionLabel}>Good News</Text>
+            <Newsitem />
+            <Newsitem />
+            <Newsitem />
+          </View>
           <Gap height={30} />
         </ScrollView>
       </View>
@@ -60,20 +77,16 @@ export default Doctor;
 
 const styles = StyleSheet.create({
   page: {
-    paddingVertical: 30,
-    paddingHorizontal: 16,
     backgroundColor: colors.secondary,
     flex: 1,
   },
   content: {
     backgroundColor: colors.white,
+    flex: 1,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    flex: 1,
   },
-  wrapperSection: {
-    paddingHorizontal: 16,
-  },
+  wrapperSection: {paddingHorizontal: 16},
   welcome: {
     fontSize: 20,
     fontFamily: fonts.primary[600],
@@ -82,12 +95,8 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     maxWidth: 209,
   },
-  category: {
-    flexDirection: 'row',
-  },
-  wrapperScroll: {
-    marginHorizontal: -16,
-  },
+  category: {flexDirection: 'row'},
+  wrapperScroll: {marginHorizontal: -16},
   sectionLabel: {
     fontSize: 16,
     fontFamily: fonts.primary[600],
