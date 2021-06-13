@@ -2,12 +2,11 @@ import React, {useState} from 'react';
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import {colors, fonts} from '../../../utils';
 
-const Input = ({label}) => {
+const Input = ({label, value, onChangeText, secureTextEntry, disable}) => {
   const [border, setBorder] = useState(colors.border);
   const onFocusForm = () => {
     setBorder(colors.tertiary);
   };
-
   const onBlurForm = () => {
     setBorder(colors.border);
   };
@@ -18,6 +17,11 @@ const Input = ({label}) => {
         onFocus={onFocusForm}
         onBlur={onBlurForm}
         style={styles.input(border)}
+        value={value}
+        onChangeText={onChangeText}
+        secureTextEntry={secureTextEntry}
+        editable={!disable}
+        selectTextOnFocus={!disable}
       />
     </View>
   );
@@ -34,8 +38,8 @@ const styles = StyleSheet.create({
   }),
   label: {
     fontSize: 16,
-    color: colors.secondary,
+    color: colors.text.secondary,
     marginBottom: 6,
-    fontFamily: fonts.primary.normal,
+    fontFamily: fonts.primary[400],
   },
 });
