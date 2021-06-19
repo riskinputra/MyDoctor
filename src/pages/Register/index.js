@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
+import {showMessage} from 'react-native-flash-message';
 import {Button, Gap, Header, Input, Loading} from '../../components';
 import {Fire} from '../../config';
 import {colors, useForm} from '../../utils';
@@ -25,7 +26,13 @@ const Register = ({navigation}) => {
       .catch(error => {
         // var errorCode = error.code;
         const errorMessage = error.message;
-        setLoading(true);
+        setLoading(false);
+        showMessage({
+          message: 'Simple message',
+          type: 'info',
+          backgroundColor: colors.error,
+          color: colors.white,
+        });
         console.error('error register:', errorMessage);
       });
   };
