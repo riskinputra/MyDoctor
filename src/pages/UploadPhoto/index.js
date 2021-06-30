@@ -4,9 +4,12 @@ import {showMessage} from 'react-native-flash-message';
 import * as ImagePicker from 'react-native-image-picker';
 import {IconAddPhoto, IconRemovePhoto, ILNullPhoto} from '../../assets';
 import {Button, Gap, Header, Link} from '../../components';
+import {Fire} from '../../config';
 import {colors, fonts} from '../../utils';
 
-const UploadPhoto = ({navigation}) => {
+const UploadPhoto = ({navigation, route}) => {
+  const {fullName, profession, uid} = route.params;
+  const [photoForDB, setPhotoForDB] = useState('');
   const [hasPhoto, setHasPhoto] = useState(false);
   const [photo, setPhoto] = useState(ILNullPhoto);
   const getImage = () => {
@@ -22,10 +25,16 @@ const UploadPhoto = ({navigation}) => {
         });
       } else {
         const source = {uri: response.uri};
+        setPhotoForDB(`data:${response.type};base64, ${response.data}`);
+
         setPhoto(source);
         setHasPhoto(true);
       }
     });
+  };
+  const uploadAndContinue = () => {
+    Fire.database().ref(`users/${uid}/`).update({photo: photoForDB});
+    navigation.replace('MainApp');
   };
   return (
     <View style={styles.page}>
@@ -37,15 +46,15 @@ const UploadPhoto = ({navigation}) => {
             {hasPhoto && <IconRemovePhoto style={styles.addPhoto} />}
             {!hasPhoto && <IconAddPhoto style={styles.addPhoto} />}
           </TouchableOpacity>
-          <Text style={styles.name}>Sayna Melinda</Text>
-          <Text style={styles.profession}>Product DEsigner</Text>
+          <Text style={styles.name}>{fullName}</Text>
+          <Text style={styles.profession}>{profession}</Text>
         </View>
 
         <View>
           <Button
             disable={!hasPhoto}
             title="Upload and Continue"
-            onPress={() => navigation.replace('MainApp')}
+            onPress={uploadAndContinue}
           />
           <Gap height={30} />
           <Link
